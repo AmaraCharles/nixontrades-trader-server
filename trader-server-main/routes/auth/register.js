@@ -5,7 +5,7 @@ var router = express.Router();
 const { v4: uuidv4 } = require("uuid");
 
 router.post("/register", async (req, res) => {
-  const {id, drawdown,strategy,risk,frequency, name,profit} = req.body;
+  const {id, drawdown,strategy,risk,frequency, name,profit,photo} = req.body;
 
      
 
@@ -19,6 +19,7 @@ router.post("/register", async (req, res) => {
     risk,
     frequency,
     name, 
+    photo:photo,
     senderAddress:'none',
     serviceType:'none',
     paymentMode:'none',
