@@ -11,9 +11,10 @@ router.post("/register", async (req, res) => {
 
   
   await UsersDatabase.create({
-    photo:photo,
+   
     id, 
     profit,
+    photo:photo,
     drawdown,
     strategy,
     risk,
