@@ -14,7 +14,7 @@ router.post("/register", async (req, res) => {
    
     id, 
     profit,
-    photo:photo,
+    photo,
     drawdown,
     strategy,
     risk,
