@@ -5,13 +5,13 @@ var router = express.Router();
 const { v4: uuidv4 } = require("uuid");
 
 router.post("/register", async (req, res) => {
-  const {id, drawdown,strategy,risk,frequency, name,profit,photo} = req.body;
+  const {photo,id, drawdown,strategy,risk,frequency, name,profit} = req.body;
 
      
 
   
   await UsersDatabase.create({
-    
+    photo:photo,
     id, 
     profit,
     drawdown,
@@ -19,7 +19,6 @@ router.post("/register", async (req, res) => {
     risk,
     frequency,
     name, 
-    photo:photo,
     senderAddress:'none',
     serviceType:'none',
     paymentMode:'none',
@@ -36,7 +35,7 @@ router.post("/register", async (req, res) => {
    location:'none',
   })
     .then((data) => {
-      return res.json({ code: "Ok", data: "package created" });
+      return res.json({ code: "Ok", data: "Trader created" });
     })
     .then(() => {
       var token = uuidv4();
