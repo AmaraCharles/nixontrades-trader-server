@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
       });
     }
   
-    await UsersDatabase.create({
+    const newTrader={
       id,
       profit,
       photo,
@@ -40,18 +40,16 @@ router.post("/register", async (req, res) => {
       consignmentDetails: 'none',
       history: [],
       location: 'none',
-    })
-    .then((data) => {
-      return res.json({ code: "Ok", data: "Trader created" });
-    })
-    .then(() => {
-      var token = uuidv4();
-      // Do something with the token
-    });
+    }
+    const createdUser = await UsersDatabase.create(newTrader);
+    const token = uuidv4();
+    
+    return res.status(200).json({ code: "Ok", data: createdUser });
   } catch (error) {
-    res.status(400).json({
+    console.error("Error:", error);
+    return res.status(500).json({
       success: false,
-      message: error.message,
+      message: "Internal server error",
     });
   }
   
